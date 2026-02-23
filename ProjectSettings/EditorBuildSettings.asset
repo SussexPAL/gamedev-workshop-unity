@@ -8,6 +8,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Workshops/2_Input-and-movement/1_SimpleMovement.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Workshops/3_UI_Interaction/Menu Scene.unity
+    guid: 48090ed76553cff4e938f67ed8bdd6ad
+  - enabled: 1
+    path: Assets/Workshops/1_Components-and-Scripting/example_cubes.unity
+    guid: 040993f9f2e27de4fa8b5682ee4b723d
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
