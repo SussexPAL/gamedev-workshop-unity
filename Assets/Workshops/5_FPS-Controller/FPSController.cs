@@ -5,7 +5,7 @@ using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class FPSControllerNew : MonoBehaviour
+public class FPSController : MonoBehaviour
 {
     // Serialized Fields: Variables that are visible in the inspector. Values can be changed without editing any code.
     [SerializeField] public float mouseSensitivity = 2f;
@@ -15,6 +15,7 @@ public class FPSControllerNew : MonoBehaviour
     [SerializeField] private float jumpTorque = 10f;        // How much to rotate the player upon a jump
     [SerializeField] private bool creative = false;         // Set to true if the player should have creative flight, like Minecraft.
     [SerializeField] private Camera cam;
+    [SerializeField] private float maxVelocity;
     // Private fields: Used by this script frequently to justify global scope
     private Rigidbody rb;                                   // Reference to the player's rigidbody, which is responsible for physics calculations
     
@@ -60,6 +61,13 @@ public class FPSControllerNew : MonoBehaviour
 
         // Reset "Pressed this frame" flags to false.
         jumpRequested = false;
+        Vector2 horizontalVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.z);
+        float velocityRatio = horizontalVelocity.magnitude/maxVelocity;
+        if(velocityRatio > 1.0)
+        {
+            horizontalVelocity = horizontalVelocity / velocityRatio;
+            rb.linearVelocity = new Vector3(horizontalVelocity.x, rb.linearVelocity.y, horizontalVelocity.y);
+        }
     }
 
     // Utility Functions:
